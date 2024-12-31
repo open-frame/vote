@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>登录</title>
+    <link href="https://unpkg.com/animate.css@4.1.1" rel="stylesheet" />
+    <link
+      href="https://unpkg.com/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(45deg, #140c06, #331e0e);
+      }
+      button,
+      input {
+        height: 50px;
+        background-color: transparent;
+        color: #a47958;
+        border: 1px solid #a47958;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <script src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://unpkg.com/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
+  <body>
+    <div>
+      <img class="d-block mb-5" src="./img/logo.png" alt="logo" srcset="" />
+      <input
+        class="mt-5 ps-2 pe-2 w-100"
+        type="text"
+        type="tel"
+        maxlength="11"
+        placeholder="手机号"
+      />
+      <button class="d-block mt-5 w-100" onclick="logon()">登 录</button>
+    </div>
+
+    <script type="text/javascript">
+      function logon() {
+        const phone = document.querySelector("input").value;
+        if (!phone) {
+          return alert("请输入手机号");
+        }
+        module.login(`?phone=${phone}`).then((res) => {
+          if (res.code === 0) {
+            localStorage.setItem("userPhone", phone);
+            window.location.href = "/vote.html";
+          }
+        });
+      }
+      const module = {};
+    </script>
+    <script type="module">
+      import { queryStatus, login } from "./js/api.js";
+      module.login = login;
+
+      queryStatus();
+    </script>
+  </body>
+</html>

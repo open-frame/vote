@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>投过票了</title>
+    <link href="https://unpkg.com/animate.css@4.1.1" rel="stylesheet" />
+    <link
+      href="https://unpkg.com/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+      }
+    </style>
+  </head>
+  <script src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://unpkg.com/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
+  <body>
+    <div>
+      <img src="../img/ok.png" alt="活动未开始" class="w-100" />
+      <h2 class="mt-5 text-center">参与过啦，要不等明年？</h2>
+    </div>
+
+    <script type="text/javascript">
+      function logon() {}
+      const module = {};
+    </script>
+    <script type="module">
+      import { queryStatus } from "../js/api.js";
+      module.queryStatus = queryStatus;
+
+      queryStatus();
+    </script>
+  </body>
+</html>
