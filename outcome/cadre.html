@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>投票结果</title>
+    <link rel="stylesheet" href="https://unpkg.com/animate.css@4.1.1" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../css/outcome.css" />
+  </head>
+  <body>
+    <div class="text-center preheat">
+      <h1 class="fw-bolder text-warning animate__animated animate__zoomIn tip1">
+        别眨眼
+      </h1>
+      <h1 class="fw-bolder text-warning animate__animated animate__zoomIn tip2">
+        结果来了
+      </h1>
+    </div>
+    <div
+      class="animate__animated animate__bounceInUp text-center text-warning hot-outcome"
+    >
+      <img
+        src="../img/only.png"
+        class="img-thumbnail bg-transparent border-0"
+        alt="活动图"
+        width="80%"
+      />
+      <h1 class="outcome-name" style="font-size: 4rem"></h1>
+    </div>
+
+    <script type="module">
+      import { voteList } from "../js/api.js";
+      import { showTip1 } from "../js/animate.js";
+
+      showTip1();
+
+      // 获取投票结果
+      voteList().then((res) => {
+        const outcomeDOM = document.querySelector(".outcome-name");
+        outcomeDOM.innerText = res.data[0]?.name;
+      });
+    </script>
+  </body>
+</html>

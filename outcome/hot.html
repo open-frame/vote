@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>投票结果</title>
+    <link rel="stylesheet" href="https://unpkg.com/animate.css@4.1.1" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../css/outcome.css" />
+  </head>
+  <body>
+    <div class="text-center preheat">
+      <h1 class="fw-bolder text-warning animate__animated animate__zoomIn tip1">
+        别眨眼
+      </h1>
+      <h1 class="fw-bolder text-warning animate__animated animate__zoomIn tip2">
+        结果来了
+      </h1>
+    </div>
+    <ul class="text-warning hot-outcome p-0 ms-0 list"></ul>
+
+    <script type="module">
+      import { voteManagerList } from "../js/api.js";
+      import { showTip1 } from "../js/animate.js";
+
+      showTip1();
+
+      // 获取投票结果
+      voteManagerList().then((res) => {
+        const list = document.querySelector(".list");
+        res.data.forEach((item, index) => {
+          const li = document.createElement("li");
+          li.className = `list-group-item d-flex align-items-center mb-5 top-${ index + 1 }`;
+          li.innerHTML = `
+              <img class="animate__animated animate__bounceInLeft me-5 img-thumbnail bg-transparent border-0" src="../../img/ranking/${ index + 1 }.png"  width="80" />
+              <h1 class="animate__animated animate__bounceInRight fw-bold text-center title">${ item.name } (${item.averageScore})</h1>
+          `;
+          list.appendChild(li);
+        });
+      });
+    </script>
+  </body>
+</html>

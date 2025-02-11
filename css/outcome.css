@@ -1,0 +1,33 @@
+@import url(./index.css);
+
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../img/outcome-bg.gif);
+  background-repeat: no-repeat;
+  background-position: top;
+  background-color: #b8131a;
+  background-size: cover;
+}
+
+.preheat .tip1,
+.preheat .tip2 {
+  font-size: 13rem;
+}
+
+.tip2,
+.hot-outcome {
+  display: none;
+}
+
+.hot-outcome {
+  margin-bottom: -18%;
+}
+
+.list .title {
+  font-size: 6rem;
+}

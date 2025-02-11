@@ -1,39 +1,45 @@
+@import url(./index.css);
+
 body {
   height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: end;
-  background-image: url(../img/vote/bg.png);
+  background-image: url(../img/bg.jpg);
   background-repeat: no-repeat;
   background-position: top;
-  background-color: #120a07;
+  background-color: #e91603;
+  background-size: contain;
 }
 
 .list {
-  height: 55vh;
+  height: 70vh;
   width: 90%;
-  border: 1px solid #a47958;
-  border-radius: 8px;
+  border: 0.1rem solid #a47958;
+  border-radius: 0.8rem;
   overflow-y: auto;
 }
 
 .title {
-  color: #db945e;
+  color: #ffb700;
+}
+.person{
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .vote-btn {
-  width: 70px;
-  height: 33px;
-  border-radius: 16px;
-  font-size: 14px;
-  color: #8f3d12;
-  background-color: #3a090b;
-  border: 2px solid #8f7e75;
+  width: 7rem;
+  height: 3.3rem;
+  border-radius: 1.6rem;
+  font-size: 1.4rem;
+  color: #ffb700;
+    background-color: #cccb9b61;
+    border: 0.2rem solid #ffa100;
 }
 
 .person {
-  font-size: 14px;
+  font-size: 1.4rem;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;

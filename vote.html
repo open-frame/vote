@@ -4,21 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>投票</title>
-    <link href="https://unpkg.com/animate.css@4.1.1" rel="stylesheet" />
+    <!-- <link href="https://unpkg.com/animate.css@4.1.1" rel="stylesheet" /> -->
     <link
       href="https://unpkg.com/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link
+    <!-- <link
       href="https://unpkg.com/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
       rel="stylesheet"
-    />
+    /> -->
     <link rel="stylesheet" href="./css/vote.css" />
   </head>
-  <script src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-  <script src="https://unpkg.com/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
+  <!-- <script src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://unpkg.com/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script> -->
   <body>
-    <ul class="list text-white mb-4 p-3"></ul>
+    <ul class="list text-white mb-5 p-3"></ul>
 
     <script type="module">
       import { base_url } from "../js/request.js";
@@ -30,14 +30,13 @@
       games().then((res) => {
         res.data.forEach((item) => {
           const li = document.createElement("li");
-          li.className = "list-group-item d-flex align-items-center";
+          li.className = "list-group-item d-flex align-items-center mb-3";
           li.innerHTML = `
-            <img src="${item.gameImgUrl}" class="img-thumbnail bg-transparent border-0" alt="活动图"  width="100" />
             <div class="ms-1 me-1 w-100">
-              <h4 class="title">${item.name}</h4>
-              <p class="text-secondary person">${item.performer}</p>
+              <h2 class="fw-bold title">${item.name}</h2>
+              <p class="person">${item.performer}</p>
             </div>
-            <button class="vote-btn" id="${item.id}" name="${item.name}">投票</button>
+            <button class="ms-1 vote-btn" id="${item.id}" name="${item.name}">投票</button>
           `;
           list.appendChild(li);
         });
@@ -49,9 +48,10 @@
           alert("表演者：\n" + event.target.innerText);
           return;
         }
-        if (event.target.className !== "vote-btn") {
+        if (!event.target.className.includes("vote-btn")) {
           return;
         }
+        window.onbeforeunload = null; // 为了屏蔽连续调用两次confirm就出现“退出网页”的摁扭
         if (!confirm(`确定要投给【${event.target.name}】吗？`)) {
           return;
         }

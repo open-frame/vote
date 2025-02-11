@@ -20,15 +20,18 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background: linear-gradient(45deg, #140c06, #331e0e);
+        background: linear-gradient(45deg, #a5170a, #fc5748);
       }
       button,
       input {
         height: 50px;
         background-color: transparent;
-        color: #a47958;
-        border: 1px solid #a47958;
+        color: #f6aa71;
+        border: 1px solid #f6aa71;
         border-radius: 8px;
+      }
+      input::placeholder {
+        color: #f6aa71;
       }
     </style>
   </head>
@@ -53,7 +56,7 @@
         if (!phone) {
           return alert("请输入手机号");
         }
-        module.login(`?phone=${phone}`).then((res) => {
+        module.login({ phone }).then((res) => {
           if (res.code === 0) {
             localStorage.setItem("userPhone", phone);
             window.location.href = "/vote.html";
